@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node16",
+    "module": "node16",
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*"]
+}
