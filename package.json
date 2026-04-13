@@ -6,12 +6,17 @@
     "dev": "remotion studio",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "render:all": "node scripts/render-all.mjs"
   },
   "repository": {},
   "license": "UNLICENSED",
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/source-serif-pro": "^5.2.5",
     "@remotion/cli": "4.0.446",
+    "@remotion/player": "4.0.446",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "remotion": "4.0.446"
