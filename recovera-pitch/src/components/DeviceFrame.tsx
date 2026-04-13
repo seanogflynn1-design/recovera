@@ -17,7 +17,8 @@ export const LaptopFrame: React.FC<{
         background: COLORS.device,
         borderRadius: 14,
         padding: 14,
-        boxShadow: "0 6px 24px rgba(13,13,13,0.08)",
+        boxShadow:
+          "0 1px 2px rgba(13,13,13,0.05), 0 12px 28px rgba(13,13,13,0.16), 0 40px 80px rgba(13,13,13,0.18)",
         boxSizing: "border-box",
         position: "relative",
         ...style,
@@ -72,7 +73,8 @@ export const PhoneFrame: React.FC<{
         borderRadius: 36,
         padding: 10,
         boxSizing: "border-box",
-        boxShadow: "0 6px 20px rgba(13,13,13,0.12)",
+        boxShadow:
+          "0 1px 2px rgba(13,13,13,0.06), 0 10px 24px rgba(13,13,13,0.18), 0 30px 60px rgba(13,13,13,0.20)",
         position: "relative",
         ...style,
       }}

@@ -5,18 +5,21 @@ import { DM, SORA } from "../fonts";
 import { Layout } from "../components/Layout";
 
 /**
- * SCENE 4 — Scale of the Problem. Frames 1560–1980 (local 0–420).
- * Running minute counter + three stats.
+ * SCENE 4 — Scale of the Problem. 630 frames / 21s.
  *
- * Counter increments 2,400 per frame. Freezes at local 240 (absolute 1800),
- * then transitions to red over the next 20 frames.
+ * A running counter of minutes wasted on reassessment today, globally.
+ * Baseline 43,200,000 (minutes burned through the morning), ticks at
+ * ~1,000 per real second (+33.33 per frame). Freezes at local 240
+ * (~8s in), then transitions to red over the next 20 frames and the
+ * three stats slide up beneath.
  */
 export const Scene04_Scale: React.FC = () => {
   const frame = useCurrentFrame();
 
   const counterFreezeFrame = 240;
   const shownFrame = Math.min(frame, counterFreezeFrame);
-  const count = Math.floor(shownFrame * 2400);
+  // Baseline + 1000/sec = +33.333/frame @ 30fps
+  const count = Math.floor(43_200_000 + shownFrame * (1000 / 30));
   const formatted = new Intl.NumberFormat("en-IE").format(count);
 
   // Red mix after freeze
@@ -101,11 +104,11 @@ export const Scene04_Scale: React.FC = () => {
         <div
           style={{
             fontFamily: SORA,
-            fontWeight: 700,
-            fontSize: 72,
+            fontWeight: 800,
+            fontSize: 104,
             color: counterColor,
             fontVariantNumeric: "tabular-nums",
-            letterSpacing: "-0.02em",
+            letterSpacing: "-0.035em",
             lineHeight: 1,
           }}
         >
@@ -122,7 +125,7 @@ export const Scene04_Scale: React.FC = () => {
             opacity: sublineOpacity,
           }}
         >
-          Every minute you watch this video: +86,400
+          Every minute you watch this video: +60,000 minutes wasted
         </div>
 
         {/* Three stats */}

@@ -170,11 +170,11 @@ export const Scene09_Comparable: React.FC = () => {
           <div
             style={{
               fontFamily: SORA,
-              fontWeight: 600,
-              fontSize: 28,
-              color: COLORS.white,
+              fontWeight: 700,
+              fontSize: 44,
+              color: COLORS.ink,
               opacity: sp1Opacity,
-              letterSpacing: "-0.01em",
+              letterSpacing: "-0.03em",
             }}
           >
             Same playbook.
@@ -182,12 +182,12 @@ export const Scene09_Comparable: React.FC = () => {
           <div
             style={{
               fontFamily: SORA,
-              fontWeight: 600,
-              fontSize: 28,
-              color: COLORS.teal,
+              fontWeight: 800,
+              fontSize: 48,
+              color: COLORS.green,
               marginTop: 8,
               opacity: sp2Opacity,
-              letterSpacing: "-0.01em",
+              letterSpacing: "-0.03em",
             }}
           >
             Larger ceiling.

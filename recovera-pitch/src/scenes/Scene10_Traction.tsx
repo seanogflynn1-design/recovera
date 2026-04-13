@@ -227,8 +227,36 @@ const DashboardScreen: React.FC = () => (
 );
 
 const PatientMobileScreen: React.FC = () => {
+  const frame = useCurrentFrame();
+
+  // Animated form score 0 → 84 (then settles, slight micro-drift)
+  const scoreRaw = interpolate(frame, [0, 90], [0, 84], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const drift = Math.sin(frame / 18) * 1.2;
+  const score = Math.max(0, Math.round(scoreRaw + (frame > 90 ? drift : 0)));
+
+  // Bars fill over 45 frames
+  const kneeFill = interpolate(frame, [30, 75], [0, 0.84], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const hipFill = interpolate(frame, [50, 95], [0, 0.62], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  // Stick figure squat — one rep every 50 frames
+  const squat = (Math.sin(frame * 0.06) + 1) / 2;
+  const hipY = interpolate(squat, [0, 1], [88, 102]);
+  const leftKX = interpolate(squat, [0, 1], [72, 66]);
+  const leftKY = interpolate(squat, [0, 1], [118, 118]);
+  const rightKX = interpolate(squat, [0, 1], [96, 102]);
+  const rightKY = interpolate(squat, [0, 1], [118, 118]);
+
   return (
-    <PhoneFrame width={220} height={440}>
+    <PhoneFrame width={240} height={480}>
       <div
         style={{
           width: "100%",
@@ -236,90 +264,191 @@ const PatientMobileScreen: React.FC = () => {
           background: COLORS.surface,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 14,
-          paddingTop: 36,
+          padding: "44px 16px 16px 16px",
           boxSizing: "border-box",
+          gap: 12,
         }}
       >
-        {/* Ring */}
-        <div style={{ position: "relative", width: 140, height: 140 }}>
-          <svg width={140} height={140} viewBox="0 0 160 160">
-            <circle
-              cx={80}
-              cy={80}
-              r={70}
-              fill="none"
-              stroke="rgba(13,13,13,0.08)"
-              strokeWidth={6}
-            />
-            <circle
-              cx={80}
-              cy={80}
-              r={70}
-              fill="none"
-              stroke={COLORS.green}
-              strokeWidth={6}
-              strokeLinecap="round"
-              strokeDasharray={`${2 * Math.PI * 70 * 0.65} ${2 * Math.PI * 70}`}
-              transform="rotate(-90 80 80)"
-            />
-          </svg>
+        {/* Header */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <div
             style={{
-              position: "absolute",
-              inset: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               fontFamily: SORA,
               fontWeight: 700,
-              fontSize: 44,
-              color: COLORS.ink,
-              letterSpacing: "-0.02em",
+              fontSize: 11,
+              letterSpacing: "0.12em",
+              color: COLORS.green,
             }}
           >
-            71
+            RECOVERA
+          </div>
+          <div
+            style={{
+              fontFamily: DM,
+              fontWeight: 400,
+              fontSize: 10,
+              color: COLORS.muted,
+            }}
+          >
+            Rep 6 / 10
           </div>
         </div>
+
+        {/* Stick figure in a card */}
         <div
           style={{
-            fontFamily: DM,
-            fontWeight: 400,
-            fontSize: 13,
-            color: COLORS.muted,
+            background: COLORS.surfaceAlt,
+            borderRadius: 10,
+            padding: 8,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flex: "0 0 auto",
+            height: 148,
           }}
         >
-          Movement Score
-        </div>
-        <div
-          style={{
-            fontFamily: DM,
-            fontWeight: 400,
-            fontSize: 12,
-            color: COLORS.mutedLight,
-          }}
-        >
-          Session 3 of 5 · Tuesday
-        </div>
-        <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
-          {[true, true, true, false, false].map((done, i) => (
-            <div
-              key={i}
-              style={{
-                width: 8,
-                height: 8,
-                borderRadius: "50%",
-                background: done ? COLORS.green : "rgba(13,13,13,0.2)",
-              }}
+          <svg width={110} height={140} viewBox="0 0 170 170">
+            {/* Floor */}
+            <line
+              x1={10}
+              y1={142}
+              x2={160}
+              y2={142}
+              stroke={COLORS.border}
+              strokeWidth={1}
             />
-          ))}
+            {/* Head */}
+            <circle
+              cx={85}
+              cy={36}
+              r={9}
+              fill="none"
+              stroke={COLORS.ink}
+              strokeWidth={2.4}
+            />
+            {/* Torso */}
+            <line x1={85} y1={45} x2={85} y2={hipY} stroke={COLORS.ink} strokeWidth={2.4} strokeLinecap="round" />
+            {/* Arms */}
+            <line x1={85} y1={56} x2={68} y2={84} stroke={COLORS.ink} strokeWidth={2.4} strokeLinecap="round" />
+            <line x1={85} y1={56} x2={102} y2={84} stroke={COLORS.ink} strokeWidth={2.4} strokeLinecap="round" />
+            {/* Legs */}
+            <line x1={85} y1={hipY} x2={leftKX} y2={leftKY} stroke={COLORS.ink} strokeWidth={2.4} strokeLinecap="round" />
+            <line x1={leftKX} y1={leftKY} x2={70} y2={142} stroke={COLORS.ink} strokeWidth={2.4} strokeLinecap="round" />
+            <line x1={85} y1={hipY} x2={rightKX} y2={rightKY} stroke={COLORS.ink} strokeWidth={2.4} strokeLinecap="round" />
+            <line x1={rightKX} y1={rightKY} x2={100} y2={142} stroke={COLORS.ink} strokeWidth={2.4} strokeLinecap="round" />
+          </svg>
         </div>
+
+        {/* Form score */}
+        <div>
+          <div
+            style={{
+              fontFamily: DM,
+              fontWeight: 400,
+              fontSize: 10,
+              color: COLORS.muted,
+              letterSpacing: "0.1em",
+            }}
+          >
+            FORM SCORE
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              gap: 6,
+              marginTop: 2,
+            }}
+          >
+            <div
+              style={{
+                fontFamily: SORA,
+                fontWeight: 800,
+                fontSize: 36,
+                color: COLORS.ink,
+                letterSpacing: "-0.03em",
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {score}
+            </div>
+            <div
+              style={{
+                fontFamily: DM,
+                fontWeight: 500,
+                fontSize: 12,
+                color: COLORS.green,
+              }}
+            >
+              ↑ live
+            </div>
+          </div>
+        </div>
+
+        {/* Bars */}
+        <MiniBar label="Left knee alignment" value={Math.round(kneeFill * 100)} fill={kneeFill} color={COLORS.green} />
+        <MiniBar label="Hip symmetry" value={Math.round(hipFill * 100)} fill={hipFill} color={COLORS.amber} />
       </div>
     </PhoneFrame>
   );
 };
+
+const MiniBar: React.FC<{ label: string; value: number; fill: number; color: string }> = ({
+  label,
+  value,
+  fill,
+  color,
+}) => (
+  <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "baseline",
+      }}
+    >
+      <div style={{ fontFamily: DM, fontWeight: 500, fontSize: 11, color: COLORS.ink }}>
+        {label}
+      </div>
+      <div
+        style={{
+          fontFamily: SORA,
+          fontWeight: 700,
+          fontSize: 11,
+          color,
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
+        {value}%
+      </div>
+    </div>
+    <div
+      style={{
+        width: "100%",
+        height: 5,
+        background: "rgba(13,13,13,0.08)",
+        borderRadius: 3,
+        marginTop: 4,
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          width: `${fill * 100}%`,
+          height: "100%",
+          background: color,
+          borderRadius: 3,
+        }}
+      />
+    </div>
+  </div>
+);
 
 const SportsTeamScreen: React.FC = () => {
   const statuses: Array<"g" | "a" | "r"> = [

@@ -94,10 +94,11 @@ export const Scene11_Close: React.FC = () => {
         <div
           style={{
             fontFamily: SORA,
-            fontWeight: 600,
-            fontSize: 48,
-            color: COLORS.white,
-            letterSpacing: "-0.02em",
+            fontWeight: 800,
+            fontSize: 72,
+            color: COLORS.ink,
+            letterSpacing: "-0.035em",
+            lineHeight: 1.05,
           }}
         >
           Recovera ends that question.
@@ -107,7 +108,7 @@ export const Scene11_Close: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: "62%",
+          top: "64%",
           left: 0,
           right: 0,
           textAlign: "center",
@@ -117,10 +118,10 @@ export const Scene11_Close: React.FC = () => {
         <div
           style={{
             fontFamily: SORA,
-            fontWeight: 600,
-            fontSize: 48,
-            color: COLORS.teal,
-            letterSpacing: "-0.02em",
+            fontWeight: 800,
+            fontSize: 64,
+            color: COLORS.green,
+            letterSpacing: "-0.035em",
           }}
         >
           Starting now.

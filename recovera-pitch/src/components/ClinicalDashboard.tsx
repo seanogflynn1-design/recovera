@@ -152,16 +152,29 @@ export const ClinicalDashboard: React.FC<Props> = ({
         </div>
         <div
           style={{
-            background: "rgba(31,77,46,0.12)",
-            color: COLORS.teal,
-            borderRadius: 4,
-            padding: "4px 10px",
+            background: COLORS.green,
+            color: "#FFFFFF",
+            borderRadius: 6,
+            padding: "6px 12px",
             fontFamily: DM,
-            fontWeight: 500,
+            fontWeight: 600,
             fontSize: 12 * px,
+            letterSpacing: "0.08em",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
           }}
         >
-          ACTIVE PROGRAMME
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: "#FFFFFF",
+              display: "inline-block",
+            }}
+          />
+          READY FOR SESSION
         </div>
       </div>
 
@@ -360,59 +373,86 @@ export const ClinicalDashboard: React.FC<Props> = ({
         </svg>
       </DashRow>
 
-      {/* AI suggestion bar */}
-      <div
-        style={{
-          background: "rgba(31,77,46,0.06)",
-          borderTop: "1px solid rgba(31,77,46,0.15)",
-          padding: `${14 * px}px ${24 * px}px`,
-          display: "flex",
-          gap: 12 * px,
-          alignItems: "flex-start",
-          opacity: interpolate(frame, [rowStartFrame + 140, rowStartFrame + 170], [0, 1], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          }),
-          marginTop: "auto",
-        }}
-      >
-        <div
-          style={{
-            color: COLORS.teal,
-            fontSize: 16 * px,
-            fontFamily: SORA,
-            lineHeight: 1,
-            paddingTop: 2,
-          }}
-        >
-          ✦
-        </div>
-        <div style={{ flex: 1 }}>
+      {/* AI suggestion bar — typewriter reveal */}
+      {(() => {
+        const AI_TEXT =
+          "Before progressing to bilateral loading, consider testing hip abductor activation — pattern is consistent with hip compensation, not quad weakness.";
+        const AI_START = rowStartFrame + 140;
+        const barOpacity = interpolate(frame, [AI_START, AI_START + 20], [0, 1], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        });
+        // 1 char every 2 frames
+        const shownChars = Math.max(0, Math.floor((frame - AI_START - 10) / 2));
+        const typed = AI_TEXT.slice(0, Math.min(shownChars, AI_TEXT.length));
+        const caretOn = shownChars < AI_TEXT.length && (frame % 20) < 10;
+        return (
           <div
             style={{
-              fontFamily: DM,
-              fontWeight: 400,
-              fontSize: 13 * px,
-              color: COLORS.mutedLight,
-              lineHeight: 1.45,
+              background: "rgba(31,77,46,0.06)",
+              borderTop: "1px solid rgba(31,77,46,0.15)",
+              padding: `${14 * px}px ${24 * px}px`,
+              display: "flex",
+              gap: 12 * px,
+              alignItems: "flex-start",
+              opacity: barOpacity,
+              marginTop: "auto",
             }}
           >
-            Before progressing to bilateral loading, consider testing hip abductor
-            activation — pattern is consistent with hip compensation, not quad weakness.
+            <div
+              style={{
+                color: COLORS.green,
+                fontSize: 16 * px,
+                fontFamily: SORA,
+                lineHeight: 1,
+                paddingTop: 2,
+              }}
+            >
+              ✦
+            </div>
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontFamily: SORA,
+                  fontWeight: 600,
+                  fontSize: 11 * px,
+                  letterSpacing: "0.12em",
+                  color: COLORS.green,
+                  marginBottom: 6,
+                }}
+              >
+                AI INSIGHT
+              </div>
+              <div
+                style={{
+                  fontFamily: DM,
+                  fontWeight: 400,
+                  fontSize: 13 * px,
+                  color: COLORS.ink,
+                  lineHeight: 1.5,
+                  minHeight: `${Math.round(13 * px * 1.5 * 3)}px`,
+                }}
+              >
+                {typed}
+                {caretOn && (
+                  <span style={{ color: COLORS.green, marginLeft: 1 }}>▍</span>
+                )}
+              </div>
+              <div
+                style={{
+                  fontFamily: DM,
+                  fontWeight: 400,
+                  fontSize: 12 * px,
+                  color: "rgba(31,77,46,0.6)",
+                  marginTop: 8,
+                }}
+              >
+                Week 8 ACL data across 847 similar patients
+              </div>
+            </div>
           </div>
-          <div
-            style={{
-              fontFamily: DM,
-              fontWeight: 400,
-              fontSize: 12 * px,
-              color: "rgba(31,77,46,0.5)",
-              marginTop: 4,
-            }}
-          >
-            Week 8 ACL data across 847 similar patients
-          </div>
-        </div>
-      </div>
+        );
+      })()}
     </div>
   );
 };
