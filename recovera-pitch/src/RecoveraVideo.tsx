@@ -40,25 +40,22 @@ const SCENES: SceneEntry[] = [
 const CROSSFADE = 15;
 
 /**
- * Wraps a Sequence component with a crossfade — fade in over the first
- * CROSSFADE frames and fade out over the last CROSSFADE frames relative
- * to the *absolute* frame position.
+ * Crossfades a Sequence's children based on the *local* (sequence-relative)
+ * frame. Inside a `<Sequence from={X}>`, `useCurrentFrame()` returns 0 at X,
+ * so the fade-in is simply [0, CROSSFADE] and fade-out [duration-CROSSFADE, duration].
  */
 const Fader: React.FC<{
-  start: number;
   duration: number;
   children: React.ReactNode;
-}> = ({ start, duration, children }) => {
+}> = ({ duration, children }) => {
   const frame = useCurrentFrame();
-  const fadeIn = interpolate(
-    frame,
-    [start, start + CROSSFADE],
-    [0, 1],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
-  );
+  const fadeIn = interpolate(frame, [0, CROSSFADE], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
   const fadeOut = interpolate(
     frame,
-    [start + duration - CROSSFADE, start + duration],
+    [duration - CROSSFADE, duration],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
@@ -72,7 +69,7 @@ export const RecoveraVideo: React.FC = () => {
     <AbsoluteFill style={{ background: "#0A0A0F" }}>
       {SCENES.map(({ id, start, duration, component: Scene }) => (
         <Sequence key={id} from={start} durationInFrames={duration}>
-          <Fader start={start} duration={duration}>
+          <Fader duration={duration}>
             <Scene />
           </Fader>
         </Sequence>
