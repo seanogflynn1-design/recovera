@@ -59,7 +59,7 @@ export const Scene11_Close: React.FC = () => {
             fontStyle: "italic",
             fontWeight: 400,
             fontSize: 28,
-            color: "rgba(255,255,255,0.2)",
+            color: "rgba(13,13,13,0.2)",
             opacity: q1Opacity,
           }}
         >

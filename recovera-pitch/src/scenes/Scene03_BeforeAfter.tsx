@@ -4,6 +4,7 @@ import { COLORS } from "../constants";
 import { DM } from "../fonts";
 import { ClinicalDashboard } from "../components/ClinicalDashboard";
 import { FounderPlaceholder } from "../components/FounderPlaceholder";
+import { LaptopFrame } from "../components/DeviceFrame";
 
 const NOTES_TEXT = `Date: 12/03/26
 
@@ -139,7 +140,7 @@ export const Scene03_BeforeAfter: React.FC = () => {
               fontFamily: DM,
               fontWeight: 400,
               fontSize: 11,
-              color: "rgba(255,255,255,0.7)",
+              color: "rgba(13,13,13,0.7)",
               textAlign: "right",
               marginTop: 2,
             }}
@@ -173,7 +174,7 @@ export const Scene03_BeforeAfter: React.FC = () => {
             right: 0,
             height: 2,
             background:
-              "linear-gradient(to right, transparent, #00D4AA, transparent)",
+              "linear-gradient(to right, transparent, #1F4D2E, transparent)",
             transform: `translateX(${sweepT}%) translateY(540px)`,
             pointerEvents: "none",
           }}
@@ -201,12 +202,25 @@ export const Scene03_BeforeAfter: React.FC = () => {
               width: 1,
               height: "100%",
               background:
-                "linear-gradient(to bottom, transparent, rgba(0,212,170,0.25), transparent)",
+                "linear-gradient(to bottom, transparent, rgba(31,77,46,0.25), transparent)",
             }}
           />
-          {/* Right — dashboard flush to edges */}
-          <div style={{ flex: 1, height: "100%", background: COLORS.bg }}>
-            <ClinicalDashboard rowStartFrame={DASHBOARD_ROW_START} />
+          {/* Right — dashboard in a laptop bezel, centered in panel */}
+          <div
+            style={{
+              flex: 1,
+              height: "100%",
+              background: COLORS.bg,
+              padding: "36px 40px",
+              boxSizing: "border-box",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <LaptopFrame style={{ width: "100%", height: "100%" }}>
+              <ClinicalDashboard rowStartFrame={DASHBOARD_ROW_START} />
+            </LaptopFrame>
           </div>
         </div>
       )}

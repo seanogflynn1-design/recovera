@@ -74,7 +74,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
       style={{
         width: "100%",
         height: "100%",
-        background: "#0D1117",
+        background: "#FFFFFF",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
@@ -84,8 +84,8 @@ export const ClinicalDashboard: React.FC<Props> = ({
       <div
         style={{
           height: 52 * px,
-          background: "#0D1520",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          background: "#FFFFFF",
+          borderBottom: "1px solid rgba(13,13,13,0.06)",
           padding: `0 ${24 * px}px`,
           display: "flex",
           alignItems: "center",
@@ -120,7 +120,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
       <div
         style={{
           padding: `${20 * px}px ${24 * px}px`,
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          borderBottom: "1px solid rgba(13,13,13,0.06)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -152,7 +152,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
         </div>
         <div
           style={{
-            background: "rgba(0,212,170,0.12)",
+            background: "rgba(31,77,46,0.12)",
             color: COLORS.teal,
             borderRadius: 4,
             padding: "4px 10px",
@@ -169,9 +169,9 @@ export const ClinicalDashboard: React.FC<Props> = ({
       <DashRow
         opacity={row1.opacity}
         ty={row1.ty}
-        background={`rgba(239,68,68,${0.06 + row1Flash})`}
+        background={`rgba(185,28,28,${0.06 + row1Flash})`}
       >
-        <IconCircle color={COLORS.red} bg="rgba(239,68,68,0.2)" px={px}>
+        <IconCircle color={COLORS.red} bg="rgba(185,28,28,0.2)" px={px}>
           ⚠
         </IconCircle>
         <div style={{ flex: 1 }}>
@@ -197,14 +197,14 @@ export const ClinicalDashboard: React.FC<Props> = ({
             Present from rep 1, not rep 8 — load-dependent, not fatigue
           </div>
         </div>
-        <Badge bg="rgba(239,68,68,0.15)" color={COLORS.red} px={px}>
+        <Badge bg="rgba(185,28,28,0.15)" color={COLORS.red} px={px}>
           REVIEW BEFORE SESSION
         </Badge>
       </DashRow>
 
       {/* Row 2 — ADHERENCE */}
       <DashRow opacity={row2.opacity} ty={row2.ty}>
-        <IconCircle color={COLORS.green} bg="rgba(16,185,129,0.18)" px={px}>
+        <IconCircle color={COLORS.green} bg="rgba(15,107,62,0.18)" px={px}>
           ✓
         </IconCircle>
         <div style={{ flex: 1 }}>
@@ -222,7 +222,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
             style={{
               width: 240 * px,
               height: 4,
-              background: "rgba(255,255,255,0.08)",
+              background: "rgba(13,13,13,0.08)",
               borderRadius: 2,
               marginTop: 8,
               overflow: "hidden",
@@ -251,7 +251,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
 
       {/* Row 3 — PAIN */}
       <DashRow opacity={row3.opacity} ty={row3.ty}>
-        <IconCircle color={COLORS.teal} bg="rgba(0,212,170,0.12)" px={px}>
+        <IconCircle color={COLORS.teal} bg="rgba(31,77,46,0.12)" px={px}>
           ↘
         </IconCircle>
         <div style={{ flex: 1 }}>
@@ -273,7 +273,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
           >
             <path
               d="M 0 25 L 30 20 L 60 18 L 90 12 L 120 6 L 120 30 L 0 30 Z"
-              fill="rgba(0,212,170,0.1)"
+              fill="rgba(31,77,46,0.1)"
             />
             <polyline
               points="0,25 30,20 60,18 90,12 120,6"
@@ -301,7 +301,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
           style={{
             width: 32 * px,
             height: 32 * px,
-            background: "rgba(0,212,170,0.12)",
+            background: "rgba(31,77,46,0.12)",
             borderRadius: "50%",
             display: "flex",
             alignItems: "center",
@@ -343,7 +343,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
             cy={22}
             r={18}
             fill="none"
-            stroke="rgba(255,255,255,0.08)"
+            stroke="rgba(13,13,13,0.08)"
             strokeWidth={3}
           />
           <circle
@@ -363,8 +363,8 @@ export const ClinicalDashboard: React.FC<Props> = ({
       {/* AI suggestion bar */}
       <div
         style={{
-          background: "rgba(0,212,170,0.06)",
-          borderTop: "1px solid rgba(0,212,170,0.15)",
+          background: "rgba(31,77,46,0.06)",
+          borderTop: "1px solid rgba(31,77,46,0.15)",
           padding: `${14 * px}px ${24 * px}px`,
           display: "flex",
           gap: 12 * px,
@@ -405,7 +405,7 @@ export const ClinicalDashboard: React.FC<Props> = ({
               fontFamily: DM,
               fontWeight: 400,
               fontSize: 12 * px,
-              color: "rgba(0,212,170,0.5)",
+              color: "rgba(31,77,46,0.5)",
               marginTop: 4,
             }}
           >
@@ -426,7 +426,7 @@ const DashRow: React.FC<{
   <div
     style={{
       padding: "16px 24px",
-      borderBottom: "1px solid rgba(255,255,255,0.04)",
+      borderBottom: "1px solid rgba(13,13,13,0.04)",
       display: "flex",
       alignItems: "center",
       gap: 16,

@@ -6,9 +6,9 @@ type Mode = "split" | "pip";
 
 /**
  * Founder placeholder — structurally present, visually invisible in final cut.
- * Background is #0C0C14, the "FOOTAGE" label uses #13131A so it disappears
- * against the panel in the rendered output but remains present in layout
- * for the editor to drop the on-camera shot onto.
+ * On light mode, background FOOTAGE_BG (#EFEFEB) and label FOOTAGE_TEXT match,
+ * so the label disappears against the panel while the panel still reads as a
+ * structural slot. Editor drops the on-camera footage onto this rectangle.
  */
 export const FounderPlaceholder: React.FC<{ mode?: Mode }> = ({
   mode = "split",
@@ -23,7 +23,7 @@ export const FounderPlaceholder: React.FC<{ mode?: Mode }> = ({
           width: 280,
           height: 158,
           background: FOOTAGE_BG,
-          border: "1px solid rgba(0,212,170,0.35)",
+          border: "1px solid rgba(31,77,46,0.35)",
           borderRadius: 8,
           display: "flex",
           flexDirection: "column",

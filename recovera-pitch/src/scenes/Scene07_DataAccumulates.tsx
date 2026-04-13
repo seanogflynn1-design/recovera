@@ -131,7 +131,7 @@ export const Scene07_DataAccumulates: React.FC = () => {
               cx={d.x}
               cy={d.y}
               r={3 * scale}
-              fill={d.warm ? "rgba(0,212,170,0.8)" : "rgba(0,212,170,0.6)"}
+              fill={d.warm ? "rgba(31,77,46,0.8)" : "rgba(31,77,46,0.6)"}
               opacity={opacity}
             />
           );

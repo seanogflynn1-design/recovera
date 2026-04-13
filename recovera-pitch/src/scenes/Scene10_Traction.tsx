@@ -4,6 +4,7 @@ import { COLORS } from "../constants";
 import { DM, SORA } from "../fonts";
 import { Layout } from "../components/Layout";
 import { ClinicalDashboard } from "../components/ClinicalDashboard";
+import { LaptopFrame, PhoneFrame } from "../components/DeviceFrame";
 
 /**
  * SCENE 10 — Where We Are. Frames 4260–4620 (local 0–360).
@@ -86,9 +87,9 @@ export const Scene10_Traction: React.FC = () => {
         {/* Status card — bottom */}
         <div
           style={{
-            background: "#111820",
+            background: "#FFFFFF",
             borderRadius: 10,
-            border: "0.5px solid rgba(255,255,255,0.08)",
+            border: "0.5px solid rgba(13,13,13,0.08)",
             padding: "24px 28px",
             display: "flex",
             flexDirection: "column",
@@ -115,7 +116,7 @@ export const Scene10_Traction: React.FC = () => {
           />
           <div
             style={{
-              background: "rgba(0,212,170,0.07)",
+              background: "rgba(31,77,46,0.07)",
               borderRadius: 6,
               padding: "10px 14px",
               display: "flex",
@@ -160,10 +161,9 @@ const Screen: React.FC<{ opacity: number; children: React.ReactNode }> = ({
     style={{
       position: "absolute",
       inset: 0,
-      background: "#0D1117",
-      border: "0.5px solid rgba(255,255,255,0.08)",
-      borderRadius: 10,
-      overflow: "hidden",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       opacity,
     }}
   >
@@ -191,7 +191,7 @@ const StatusRow: React.FC<{
         width: 22,
         height: 22,
         borderRadius: "50%",
-        background: "rgba(16,185,129,0.15)",
+        background: "rgba(15,107,62,0.15)",
         color: iconColor,
         display: "flex",
         alignItems: "center",
@@ -219,50 +219,39 @@ const StatusRow: React.FC<{
 /* ---------- four product screens ---------- */
 
 const DashboardScreen: React.FC = () => (
-  // We render the dashboard inside a scaled container so the full UI shows.
-  <div style={{ width: "100%", height: "100%" }}>
-    <ClinicalDashboard rowStartFrame={0} compact />
-  </div>
+  <LaptopFrame style={{ width: "92%", height: "94%" }}>
+    <div style={{ width: "100%", height: "100%" }}>
+      <ClinicalDashboard rowStartFrame={0} compact />
+    </div>
+  </LaptopFrame>
 );
 
 const PatientMobileScreen: React.FC = () => {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        background: "#0D1117",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {/* Phone frame 360×640 scaled down */}
+    <PhoneFrame width={220} height={440}>
       <div
         style={{
-          width: 240,
-          height: 420,
-          background: "#0A0A0F",
-          border: "2px solid rgba(255,255,255,0.1)",
-          borderRadius: 28,
-          padding: 24,
-          boxSizing: "border-box",
+          width: "100%",
+          height: "100%",
+          background: COLORS.surface,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           gap: 14,
+          paddingTop: 36,
+          boxSizing: "border-box",
         }}
       >
         {/* Ring */}
-        <div style={{ position: "relative", width: 160, height: 160 }}>
-          <svg width={160} height={160} viewBox="0 0 160 160">
+        <div style={{ position: "relative", width: 140, height: 140 }}>
+          <svg width={140} height={140} viewBox="0 0 160 160">
             <circle
               cx={80}
               cy={80}
               r={70}
               fill="none"
-              stroke="rgba(255,255,255,0.08)"
+              stroke="rgba(13,13,13,0.08)"
               strokeWidth={6}
             />
             <circle
@@ -270,7 +259,7 @@ const PatientMobileScreen: React.FC = () => {
               cy={80}
               r={70}
               fill="none"
-              stroke={COLORS.teal}
+              stroke={COLORS.green}
               strokeWidth={6}
               strokeLinecap="round"
               strokeDasharray={`${2 * Math.PI * 70 * 0.65} ${2 * Math.PI * 70}`}
@@ -286,8 +275,8 @@ const PatientMobileScreen: React.FC = () => {
               justifyContent: "center",
               fontFamily: SORA,
               fontWeight: 700,
-              fontSize: 48,
-              color: COLORS.white,
+              fontSize: 44,
+              color: COLORS.ink,
               letterSpacing: "-0.02em",
             }}
           >
@@ -298,7 +287,7 @@ const PatientMobileScreen: React.FC = () => {
           style={{
             fontFamily: DM,
             fontWeight: 400,
-            fontSize: 14,
+            fontSize: 13,
             color: COLORS.muted,
           }}
         >
@@ -308,8 +297,8 @@ const PatientMobileScreen: React.FC = () => {
           style={{
             fontFamily: DM,
             fontWeight: 400,
-            fontSize: 13,
-            color: "#374151",
+            fontSize: 12,
+            color: COLORS.mutedLight,
           }}
         >
           Session 3 of 5 · Tuesday
@@ -322,13 +311,13 @@ const PatientMobileScreen: React.FC = () => {
                 width: 8,
                 height: 8,
                 borderRadius: "50%",
-                background: done ? COLORS.teal : "rgba(255,255,255,0.2)",
+                background: done ? COLORS.green : "rgba(13,13,13,0.2)",
               }}
             />
           ))}
         </div>
       </div>
-    </div>
+    </PhoneFrame>
   );
 };
 
@@ -339,17 +328,15 @@ const SportsTeamScreen: React.FC = () => {
     "g", "g", "r", "a",
   ];
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        background: "#0D1117",
-        padding: 18,
-        boxSizing: "border-box",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <LaptopFrame style={{ width: "92%", height: "94%" }} pad>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
       <div
         style={{
           fontFamily: SORA,
@@ -374,7 +361,7 @@ const SportsTeamScreen: React.FC = () => {
           <div
             key={i}
             style={{
-              background: "#111820",
+              background: COLORS.surfaceAlt,
               borderRadius: 6,
               padding: 10,
               display: "flex",
@@ -401,7 +388,7 @@ const SportsTeamScreen: React.FC = () => {
                   fontFamily: DM,
                   fontWeight: 500,
                   fontSize: 11,
-                  color: COLORS.white,
+                  color: COLORS.ink,
                 }}
               >
                 Player {i + 1}
@@ -412,84 +399,84 @@ const SportsTeamScreen: React.FC = () => {
                 fontFamily: SORA,
                 fontWeight: 600,
                 fontSize: 12,
-                color: COLORS.mutedLight,
+                color: COLORS.inkSoft,
               }}
             >
               {70 + Math.round(Math.sin(i * 1.3) * 15 + 15)}
             </div>
           </div>
         ))}
+        </div>
       </div>
-    </div>
+    </LaptopFrame>
   );
 };
 
 const InsurerROIScreen: React.FC = () => {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        background: "#0D1117",
-        padding: 24,
-        boxSizing: "border-box",
-        display: "flex",
-        flexDirection: "column",
-        gap: 20,
-      }}
-    >
-      <div style={{ display: "flex", gap: 20 }}>
-        <MetricBig value="€186K" sub="platform investment" color={COLORS.white} />
-        <MetricBig value="€2.4M" sub="claims saved" color={COLORS.green} />
-      </div>
+    <LaptopFrame style={{ width: "92%", height: "94%" }} pad>
       <div
         style={{
-          fontFamily: SORA,
-          fontWeight: 600,
-          fontSize: 20,
-          color: COLORS.teal,
-        }}
-      >
-        13.4× ROI · Q4 2025
-      </div>
-      {/* Bar chart */}
-      <div
-        style={{
+          width: "100%",
+          height: "100%",
           display: "flex",
-          alignItems: "flex-end",
-          gap: 40,
-          height: 120,
-          marginTop: "auto",
+          flexDirection: "column",
+          gap: 20,
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-          <div style={{ width: 40, height: 20, background: "#374151" }} />
-          <div
-            style={{
-              fontFamily: DM,
-              fontWeight: 400,
-              fontSize: 11,
-              color: COLORS.muted,
-            }}
-          >
-            Invest
-          </div>
+        <div style={{ display: "flex", gap: 20 }}>
+          <MetricBig value="€186K" sub="platform investment" color={COLORS.ink} />
+          <MetricBig value="€2.4M" sub="claims saved" color={COLORS.green} />
         </div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-          <div style={{ width: 40, height: 100, background: COLORS.teal }} />
-          <div
-            style={{
-              fontFamily: DM,
-              fontWeight: 400,
-              fontSize: 11,
-              color: COLORS.muted,
-            }}
-          >
-            Saved
+        <div
+          style={{
+            fontFamily: SORA,
+            fontWeight: 600,
+            fontSize: 20,
+            color: COLORS.green,
+          }}
+        >
+          13.4× ROI · Q4 2025
+        </div>
+        {/* Bar chart */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            gap: 40,
+            height: 100,
+            marginTop: "auto",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+            <div style={{ width: 40, height: 20, background: COLORS.mutedLight }} />
+            <div
+              style={{
+                fontFamily: DM,
+                fontWeight: 400,
+                fontSize: 11,
+                color: COLORS.muted,
+              }}
+            >
+              Invest
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+            <div style={{ width: 40, height: 90, background: COLORS.green }} />
+            <div
+              style={{
+                fontFamily: DM,
+                fontWeight: 400,
+                fontSize: 11,
+                color: COLORS.muted,
+              }}
+            >
+              Saved
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </LaptopFrame>
   );
 };
 

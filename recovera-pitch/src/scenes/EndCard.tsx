@@ -37,8 +37,9 @@ export const EndCard: React.FC = () => {
     extrapolateRight: "clamp",
   });
 
-  // Final fade to black 150 – 180
-  const fadeOut = interpolate(frame, [150, 180], [1, 0], {
+  // Hold the full card for a long beat, then fade to the page color
+  // across the last 30 frames of the card's 270-frame run.
+  const fadeOut = interpolate(frame, [240, 270], [1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -102,7 +103,7 @@ export const EndCard: React.FC = () => {
             marginTop: 48,
             width: 720,
             height: 1,
-            background: "rgba(255,255,255,0.08)",
+            background: "rgba(13,13,13,0.08)",
             opacity: divider,
           }}
         />
@@ -128,7 +129,7 @@ export const EndCard: React.FC = () => {
             fontFamily: DM,
             fontWeight: 400,
             fontSize: 13,
-            color: "#374151",
+            color: "#9CA3AF",
             opacity: credit,
           }}
         >

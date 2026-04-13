@@ -142,8 +142,8 @@ export const Scene09_Comparable: React.FC = () => {
           <ComparableCard
             header="VEEVA SYSTEMS"
             headerColor={COLORS.mutedLight}
-            border="0.5px solid rgba(255,255,255,0.08)"
-            bg="#111820"
+            border="0.5px solid rgba(13,13,13,0.08)"
+            bg="#FFFFFF"
             rows={[
               ["Market", "Pharma CRM"],
               ["Built through", "Sales reps"],
@@ -154,8 +154,8 @@ export const Scene09_Comparable: React.FC = () => {
           <ComparableCard
             header="RECOVERA"
             headerColor={COLORS.teal}
-            border="0.5px solid rgba(0,212,170,0.25)"
-            bg="#0A1E1A"
+            border="0.5px solid rgba(31,77,46,0.25)"
+            bg="#E9F2EC"
             rows={[
               ["Market", <>Movement health (<span style={{ color: COLORS.teal }}>5× larger</span>)</>],
               ["Built through", "Physiotherapists"],

@@ -89,7 +89,7 @@ export const Scene04_Scale: React.FC = () => {
               fontFamily: DM,
               fontWeight: 400,
               fontSize: 14,
-              color: "#374151",
+              color: "#9CA3AF",
               marginTop: 8,
             }}
           >

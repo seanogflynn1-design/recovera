@@ -131,7 +131,7 @@ export const Scene01_Void: React.FC = () => {
           left: "15%",
           right: "15%",
           height: 1,
-          background: "rgba(255,255,255,0.08)",
+          background: "rgba(13,13,13,0.08)",
           transform: `scaleX(${dividerScale})`,
           transformOrigin: "center",
           opacity: allFade,

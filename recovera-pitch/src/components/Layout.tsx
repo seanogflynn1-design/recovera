@@ -39,7 +39,7 @@ export const Layout: React.FC<Props> = ({ mode, children }) => {
           width: 1,
           height: "100%",
           background:
-            "linear-gradient(to bottom, transparent, rgba(0,212,170,0.25), transparent)",
+            "linear-gradient(to bottom, transparent, rgba(31,77,46,0.25), transparent)",
         }}
       />
       <div

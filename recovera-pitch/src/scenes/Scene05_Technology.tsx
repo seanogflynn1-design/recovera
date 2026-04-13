@@ -100,9 +100,9 @@ export const Scene05_Technology: React.FC = () => {
         >
           <div
             style={{
-              background: "#111820",
+              background: "#FFFFFF",
               borderRadius: 12,
-              border: "0.5px solid rgba(255,255,255,0.08)",
+              border: "0.5px solid rgba(13,13,13,0.08)",
               padding: "40px 48px",
               transform: `translateY(${cardTy}px)`,
               maxWidth: 640,
@@ -160,7 +160,7 @@ export const Scene05_Technology: React.FC = () => {
                 style={{
                   width: 1,
                   height: 80,
-                  background: "rgba(255,255,255,0.1)",
+                  background: "rgba(13,13,13,0.1)",
                   position: "relative",
                   flexShrink: 0,
                 }}
@@ -175,7 +175,7 @@ export const Scene05_Technology: React.FC = () => {
                     fontWeight: 400,
                     fontSize: 32,
                     color: COLORS.muted,
-                    background: "#111820",
+                    background: "#FFFFFF",
                     padding: "4px 8px",
                   }}
                 >
@@ -279,12 +279,12 @@ export const Scene05_Technology: React.FC = () => {
         <div
           style={{
             marginTop: 32,
-            background: "rgba(0,212,170,0.08)",
-            border: "1px solid rgba(0,212,170,0.2)",
+            background: "rgba(31,77,46,0.08)",
+            border: "1px solid rgba(31,77,46,0.2)",
             borderRadius: 8,
             padding: "16px 20px",
             opacity: hlOpacity,
-            boxShadow: `0 0 32px rgba(0,212,170,${hlGlow})`,
+            boxShadow: `0 0 32px rgba(31,77,46,${hlGlow})`,
           }}
         >
           <div
@@ -317,7 +317,7 @@ const CompetitorRow: React.FC<{
       justifyContent: "space-between",
       alignItems: "center",
       padding: "16px 0",
-      borderBottom: "0.5px solid rgba(255,255,255,0.06)",
+      borderBottom: "0.5px solid rgba(13,13,13,0.06)",
       opacity: anim.opacity,
       transform: `translateY(${anim.ty}px)`,
       gap: 16,
@@ -340,7 +340,7 @@ const CompetitorRow: React.FC<{
         fontFamily: DM,
         fontWeight: 400,
         fontSize: 14,
-        color: "#374151",
+        color: "#9CA3AF",
         flex: 1,
       }}
     >

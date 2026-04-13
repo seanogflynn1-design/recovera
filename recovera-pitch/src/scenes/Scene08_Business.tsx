@@ -35,9 +35,10 @@ export const Scene08_Business: React.FC = () => {
   const introY = interpolate(headerProgress, [0, 1], [0, -220]);
   const introOpacity = interpolate(headerProgress, [0, 1], [1, 0.5]);
 
-  // Layer animations — every 90 frames starting local 90
+  // Layer animations — every 120 frames starting local 120 (slower cadence
+  // so each stream has time to be read; duration was extended 1.5×).
   const layerAnim = (i: number) => {
-    const s = 90 + i * 90;
+    const s = 120 + i * 120;
     return {
       opacity: interpolate(frame, [s, s + 30], [0, 1], {
         extrapolateLeft: "clamp",
@@ -56,8 +57,8 @@ export const Scene08_Business: React.FC = () => {
   const L4 = layerAnim(3);
   const L5 = layerAnim(4);
 
-  // Total bar at local 540
-  const TOTAL_START = 540;
+  // Total bar lands after all five layers have settled
+  const TOTAL_START = 780;
   const totalOpacity = interpolate(
     frame,
     [TOTAL_START, TOTAL_START + 25],
@@ -115,7 +116,7 @@ export const Scene08_Business: React.FC = () => {
               fontFamily: DM,
               fontWeight: 400,
               fontSize: 20,
-              color: "#374151",
+              color: "#9CA3AF",
               marginTop: 12,
               opacity: i3,
             }}
@@ -129,72 +130,72 @@ export const Scene08_Business: React.FC = () => {
           <Layer
             idx="01"
             title="CLINIC SAAS"
-            titleColor={COLORS.mutedLight}
+            titleColor={COLORS.inkSoft}
             sub="Physiotherapy practices · €400–700/month"
             value="€96M – €168M"
-            valueColor={COLORS.mutedLight}
+            valueColor={COLORS.ink}
             valueSub="ARR potential"
-            bg="#111820"
-            borderColor="#374151"
+            bg="#FFFFFF"
+            borderColor={COLORS.muted}
             anim={L1}
           />
           <Layer
             idx="02"
             title="ENTERPRISE"
-            titleColor="#60A5FA"
+            titleColor="#1E40AF"
             sub="Sports orgs · employers · hospitals"
             value="€90M – €300M"
-            valueColor="#60A5FA"
+            valueColor="#1E40AF"
             valueSub="ARR potential"
-            bg="#0F1720"
-            borderColor="#1A4A6B"
+            bg="#FFFFFF"
+            borderColor="#1E40AF"
             anim={L2}
           />
           <Layer
             idx="03"
-            title="INSURER CONTRACTS"
-            titleColor={COLORS.teal}
-            sub="Outcome-based · per avoided readmission"
-            value="€60M – €180M"
-            valueColor={COLORS.teal}
+            title="PROFESSIONAL NETWORK"
+            titleColor="#5B21B6"
+            sub="Verified providers · marketplace fees"
+            value="€72M – €360M"
+            valueColor="#5B21B6"
             valueSub="ARR potential"
-            bg="#0D1E1A"
-            borderColor={COLORS.tealDim}
+            bg="#F3F1F6"
+            borderColor="#5B21B6"
             anim={L3}
           />
           <Layer
             idx="04"
-            title="DATA & INTELLIGENCE"
-            titleColor={COLORS.teal}
-            sub="Bloomberg for movement health · 80–90% margin"
-            value="€25M – €100M"
-            valueColor={COLORS.teal}
+            title="INSURER CONTRACTS"
+            titleColor={COLORS.green}
+            sub="Outcome-based · per avoided readmission"
+            value="€60M – €180M"
+            valueColor={COLORS.green}
             valueSub="ARR potential"
-            bg="#0A1E1A"
-            borderColor={COLORS.teal}
-            glow
+            bg="#F1F6F3"
+            borderColor={COLORS.greenDim}
             anim={L4}
-            badge="HIGHEST MARGIN"
           />
           <Layer
             idx="05"
-            title="PROFESSIONAL NETWORK"
-            titleColor="#A78BFA"
-            sub="Verified providers · marketplace fees"
-            value="€72M – €360M"
-            valueColor="#A78BFA"
+            title="DATA & INTELLIGENCE"
+            titleColor={COLORS.green}
+            sub="Bloomberg for movement health · 80–90% margin"
+            value="€25M – €100M"
+            valueColor={COLORS.green}
             valueSub="ARR potential"
-            bg="#120F1E"
-            borderColor="#7C3AED"
+            bg="#E9F2EC"
+            borderColor={COLORS.green}
+            glow
             anim={L5}
+            badge="HIGHEST MARGIN"
           />
 
           {/* Total */}
           <div
             style={{
               marginTop: 20,
-              background: "rgba(0,212,170,0.06)",
-              border: "1px solid rgba(0,212,170,0.15)",
+              background: "rgba(31,77,46,0.06)",
+              border: "1px solid rgba(31,77,46,0.15)",
               borderRadius: 8,
               padding: "20px 24px",
               display: "flex",
@@ -275,7 +276,7 @@ const Layer: React.FC<{
       justifyContent: "space-between",
       boxSizing: "border-box",
       position: "relative",
-      boxShadow: glow ? "-4px 0 20px rgba(0,212,170,0.3)" : undefined,
+      boxShadow: glow ? "-4px 0 20px rgba(31,77,46,0.3)" : undefined,
       opacity: anim.opacity,
       transform: `translateX(${anim.tx}px)`,
     }}
@@ -294,7 +295,7 @@ const Layer: React.FC<{
             fontFamily: SORA,
             fontWeight: 700,
             fontSize: 11,
-            color: "#374151",
+            color: "#9CA3AF",
           }}
         >
           {idx}
@@ -352,7 +353,7 @@ const Layer: React.FC<{
           position: "absolute",
           top: 6,
           right: 6,
-          background: "rgba(0,212,170,0.12)",
+          background: "rgba(31,77,46,0.12)",
           color: COLORS.teal,
           fontFamily: DM,
           fontWeight: 500,

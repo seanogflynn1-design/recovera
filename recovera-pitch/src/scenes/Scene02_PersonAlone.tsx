@@ -29,8 +29,8 @@ export const Scene02_PersonAlone: React.FC = () => {
   const torsoTilt = interpolate(squat, [0, 1], [0, 6]); // degrees forward
 
   // Joint styles
-  const strokeCol = "rgba(255,255,255,0.35)";
-  const jointCol = "rgba(255,255,255,0.3)";
+  const strokeCol = "rgba(13,13,13,0.35)";
+  const jointCol = "rgba(13,13,13,0.3)";
   const limbW = 3;
 
   // ---- Overlay timings (local = absolute - 540) ----
@@ -83,7 +83,7 @@ export const Scene02_PersonAlone: React.FC = () => {
           y1={780}
           x2={1920}
           y2={780}
-          stroke="rgba(255,255,255,0.06)"
+          stroke="rgba(13,13,13,0.06)"
           strokeWidth={1}
         />
         {/* Window — moonlight suggestion */}
@@ -92,8 +92,8 @@ export const Scene02_PersonAlone: React.FC = () => {
           y={120}
           width={220}
           height={300}
-          fill="rgba(255,255,255,0.02)"
-          stroke="rgba(255,255,255,0.05)"
+          fill="rgba(13,13,13,0.02)"
+          stroke="rgba(13,13,13,0.05)"
           strokeWidth={1}
         />
         {/* Mat on the floor */}
@@ -103,8 +103,8 @@ export const Scene02_PersonAlone: React.FC = () => {
           width={500}
           height={60}
           rx={4}
-          fill="rgba(255,255,255,0.04)"
-          stroke="rgba(255,255,255,0.06)"
+          fill="rgba(13,13,13,0.04)"
+          stroke="rgba(13,13,13,0.06)"
         />
 
         {/* Figure — torso tilts slightly forward as the hips drop */}
@@ -115,7 +115,7 @@ export const Scene02_PersonAlone: React.FC = () => {
             cy={380}
             r={28}
             fill="none"
-            stroke="rgba(255,255,255,0.5)"
+            stroke="rgba(13,13,13,0.5)"
             strokeWidth={2}
           />
           {/* Neck */}
@@ -155,7 +155,7 @@ export const Scene02_PersonAlone: React.FC = () => {
             y1={620}
             x2={leftKneeX}
             y2={leftKneeY}
-            stroke="rgba(239,68,68,0.4)"
+            stroke="rgba(185,28,28,0.4)"
             strokeWidth={1}
             strokeDasharray="4 4"
             opacity={overlayOpacity}
@@ -175,7 +175,7 @@ export const Scene02_PersonAlone: React.FC = () => {
           fontStyle: "italic",
           fontWeight: 400,
           fontSize: 22,
-          color: "rgba(255,255,255,0.4)",
+          color: "rgba(13,13,13,0.4)",
           opacity: caption1Opacity * caption1FadeOut,
         }}
       >
@@ -188,8 +188,8 @@ export const Scene02_PersonAlone: React.FC = () => {
           position: "absolute",
           top: 590,
           left: 560,
-          background: "rgba(239,68,68,0.2)",
-          border: "1px solid rgba(239,68,68,0.4)",
+          background: "rgba(185,28,28,0.2)",
+          border: "1px solid rgba(185,28,28,0.4)",
           borderRadius: 20,
           padding: "6px 14px",
           fontFamily: DM,
@@ -208,8 +208,8 @@ export const Scene02_PersonAlone: React.FC = () => {
           position: "absolute",
           top: 360,
           left: 1180,
-          background: "rgba(0,212,170,0.1)",
-          border: "1px solid rgba(0,212,170,0.3)",
+          background: "rgba(31,77,46,0.1)",
+          border: "1px solid rgba(31,77,46,0.3)",
           borderRadius: 20,
           padding: "6px 14px",
           fontFamily: DM,
@@ -249,7 +249,7 @@ export const Scene02_PersonAlone: React.FC = () => {
           style={{
             width: "100%",
             height: 4,
-            background: "rgba(255,255,255,0.1)",
+            background: "rgba(13,13,13,0.1)",
             borderRadius: 2,
             overflow: "hidden",
           }}

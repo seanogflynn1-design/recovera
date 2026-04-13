@@ -97,7 +97,7 @@ export const Scene06_CompetitorMatrix: React.FC = () => {
             y1={350}
             x2={1000 * hAxis}
             y2={350}
-            stroke="rgba(255,255,255,0.12)"
+            stroke="rgba(13,13,13,0.12)"
             strokeWidth={1}
           />
           {/* V axis at x = 48% = 480 */}
@@ -106,7 +106,7 @@ export const Scene06_CompetitorMatrix: React.FC = () => {
             y1={0}
             x2={480}
             y2={700 * vAxis}
-            stroke="rgba(255,255,255,0.12)"
+            stroke="rgba(13,13,13,0.12)"
             strokeWidth={1}
           />
         </svg>
@@ -150,7 +150,7 @@ export const Scene06_CompetitorMatrix: React.FC = () => {
             height: 120,
             transform: `translate(-50%, -50%) scale(${glowVisible ? glowScale : 0})`,
             background:
-              "radial-gradient(circle, rgba(0,212,170,0.18) 0%, transparent 65%)",
+              "radial-gradient(circle, rgba(31,77,46,0.18) 0%, transparent 65%)",
             opacity: glowOpacity,
             pointerEvents: "none",
           }}
@@ -195,7 +195,7 @@ export const Scene06_CompetitorMatrix: React.FC = () => {
               height: 28,
               borderRadius: "50%",
               background: COLORS.teal,
-              border: "2px solid rgba(0,212,170,0.4)",
+              border: "2px solid rgba(31,77,46,0.4)",
               boxSizing: "border-box",
             }}
           />
@@ -250,7 +250,7 @@ const AxisLabel: React.FC<{
       fontFamily: DM,
       fontWeight: 400,
       fontSize: 13,
-      color: "#374151",
+      color: "#9CA3AF",
       opacity,
       ...style,
     }}
@@ -275,8 +275,8 @@ const CompetitorDot: React.FC<{
         width: 20,
         height: 20,
         borderRadius: "50%",
-        background: "#1F2937",
-        border: "1px solid rgba(255,255,255,0.1)",
+        background: "#D4D4D1",
+        border: "1px solid rgba(13,13,13,0.1)",
         boxSizing: "border-box",
         transform: `translate(-50%, -50%) scale(${scale})`,
         opacity,
